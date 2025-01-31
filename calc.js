@@ -14,9 +14,13 @@ function convertToMeters(value, fromUnit) {
     if (fromUnit === "inches") {
         return value / 39.3701;
     }
+    return value;
 };
 
 function convertFromMeters(meters, toUnit) {
+    if (toUnit === "meters") {
+        return meters
+    }
     if (toUnit === "kilometers") {
         return meters / 1000;
     }
@@ -45,10 +49,9 @@ function convert() {
     let to_unit = document.getElementById('toUnit').value;
     console.log(to_unit);
 
-    // input to meters
     const valueInMeters = convertToMeters(Number(input_number), from_unit);
-    // convert result into targeted unit
     const resultInMeters = convertFromMeters(valueInMeters, to_unit);
-    //display result
-    document.getElementById('result').innerHTML = `${input_number}  ${from_unit} = ${resultInMeters} ${to_unit}`
-}
+
+    // Display result
+    document.getElementById("result").innerHTML = `${input_number} ${from_unit} = ${resultInMeters} ${to_unit}`;
+    }
